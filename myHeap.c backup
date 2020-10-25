@@ -13,7 +13,9 @@ void* myAlloc(int size) {
            if (traverser -> size_status - memToAlloc >= 8) {
                    //split
                    traverser -> size_status += memToAlloc + 1;
-                   currAddress = traverser;
+                   currAddress = traverser+1;
+                   traverser += traverser -> size_status;
+                   traverser -> size_status += 2;       //needs to update p-bit and declare new memory available for this block
            }
             //update p-bit
            //update a-bit
