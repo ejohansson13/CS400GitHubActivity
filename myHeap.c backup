@@ -1,0 +1,31 @@
+void* myAlloc(int size) {
+    if (size < 1) return NULL;
+    int memToAlloc = size+4;
+    if (size > allocsize) return NULL;
+    if (memToAlloc % 8 != 0) {
+            memToAlloc += (memToAlloc % 8);
+    }
+
+    traverser = (currAddress - 1) + (currAddress -> size_status - (currAddress -> size_status % 8));
+
+    if (traverser -> size_status % 8 == 0 || traverser -> size_status == 2) {
+           //split as necessary
+           if (traverser -> size_status - memToAlloc >= 8) {
+                   //split
+                   traverser -> size_status += memToAlloc + 1;
+                   currAddress = traverser;
+           }
+            //update p-bit
+           //update a-bit
+
+    while (currAddress != traverser) {
+            //start at currAddress and traverse throughout memory to find next available block.
+            if (traverser -> size_status % 8 == 1 || traverser -> size_status % 8 == 3) {
+                traverser = (currAddress - 1) + (currAddress -> size_status - (currAddress -> size_status % 8));
+            }
+           else {
+           //size_status % 8 == 0 || 2 --> previous block was either allocated or not, doesn't matter
+           //now possible to allocate this block, because it wasn't allocated
+                if (traverser -> size_status > size) {
+                        //allocate
+                }
