@@ -29,3 +29,7 @@ void* myAlloc(int size) {
                 if (traverser -> size_status > size) {
                         //allocate
                 }
+           }
+    }
+    return NULL;
+}
